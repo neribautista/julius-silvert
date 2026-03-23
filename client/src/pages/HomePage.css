@@ -1,0 +1,128 @@
+.home { padding-bottom: 0; }
+
+/* Hero grid */
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1fr;
+  grid-template-rows: 200px;
+  gap: 12px;
+  margin-top: 20px;
+}
+.hero-truck {
+  background: var(--navy) url('https://via.placeholder.com/800x200?text=Truck') center/cover no-repeat;
+  border-radius: var(--radius-md);
+  position: relative;
+  overflow: hidden;
+  grid-row: span 1;
+}
+.hero-truck::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(120deg, rgba(26,39,68,0.82) 40%, transparent);
+}
+.hero-truck__overlay {
+  position: relative; z-index: 1;
+  padding: 24px;
+  height: 100%;
+  display: flex; flex-direction: column; justify-content: flex-end;
+}
+.hero-truck__logo { display: flex; flex-direction: column; line-height: 1; color: var(--white); }
+.hero-truck__logo span  { font-family: var(--font-display); font-size: 22px; font-style: italic; }
+.hero-truck__logo strong{ font-family: var(--font-display); font-size: 22px; letter-spacing: 0.1em; text-transform: uppercase; }
+.hero-truck__logo small { font-size: 10px; letter-spacing: 0.14em; color: rgba(255,255,255,0.6); margin-top: 2px; }
+.hero-truck__sub   { color: rgba(255,255,255,0.75); font-size: 12px; margin-top: 8px; }
+.hero-truck__phone { color: var(--white); font-size: 15px; font-weight: 600; margin-top: 4px; }
+
+.hero-banner {
+  border-radius: var(--radius-md);
+  padding: 24px 20px;
+  display: flex; flex-direction: column; justify-content: center;
+  text-decoration: none;
+  transition: filter var(--transition), transform var(--transition);
+}
+.hero-banner:hover { filter: brightness(1.08); transform: scale(1.01); }
+.hero-banner__title {
+  font-family: var(--font-display);
+  font-size: 22px;
+  color: var(--white);
+  line-height: 1.15;
+}
+.hero-banner__sub { color: rgba(255,255,255,0.8); font-size: 13px; margin-top: 6px; }
+
+/* Category strip */
+.category-strip {
+  background: var(--gray-100);
+  border-top: 1px solid var(--gray-200);
+  border-bottom: 1px solid var(--gray-200);
+  margin-top: 32px;
+  padding: 20px 0;
+}
+.category-strip__inner {
+  display: flex; gap: 12px; overflow-x: auto; scrollbar-width: none;
+}
+.category-strip__inner::-webkit-scrollbar { display: none; }
+.cat-chip {
+  display: flex; align-items: center; gap: 8px;
+  padding: 10px 18px;
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: 24px;
+  white-space: nowrap;
+  font-size: 14px; font-weight: 500;
+  color: var(--gray-800);
+  text-decoration: none;
+  transition: all var(--transition);
+  flex-shrink: 0;
+}
+.cat-chip:hover { border-color: var(--navy); color: var(--navy); box-shadow: var(--shadow-sm); }
+.cat-chip__emoji { font-size: 18px; }
+
+/* Product sections */
+.product-section { margin-top: 60px; }
+.product-section__head {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  margin-bottom: 28px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid var(--gray-200);
+}
+.product-section__head h2 { font-size: 28px; color: var(--navy); }
+.product-section__head p  { font-size: 14px; color: var(--gray-400); margin-top: 4px; }
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+.product-card-skeleton {
+  background: linear-gradient(90deg, var(--gray-100) 25%, var(--gray-200) 50%, var(--gray-100) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+  border-radius: var(--radius-md);
+  aspect-ratio: 0.75;
+}
+@keyframes shimmer { to { background-position: -200% 0; } }
+
+/* CTA */
+.cta-banner {
+  background: var(--navy);
+  margin-top: 80px;
+  padding: 60px 0;
+}
+.cta-banner__inner {
+  display: flex; align-items: center; justify-content: space-between; gap: 32px;
+}
+.cta-banner h2 { font-size: 32px; color: var(--white); }
+.cta-banner p  { color: rgba(255,255,255,0.75); margin-top: 8px; }
+
+@media (max-width: 1024px) {
+  .hero-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 180px 180px; }
+  .hero-truck { grid-column: span 2; }
+}
+@media (max-width: 640px) {
+  .hero-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
+  .hero-truck { grid-column: span 1; height: 180px; }
+  .hero-banner { padding: 20px 16px; }
+  .hero-banner__title { font-size: 18px; }
+  .cta-banner__inner { flex-direction: column; text-align: center; }
+  .product-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+}

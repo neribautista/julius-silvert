@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap');
+
+:root {
+  --navy:   #1a2744;
+  --navy-light: #243259;
+  --red:    #c0392b;
+  --red-hover: #a93226;
+  --gold:   #b8860b;
+  --white:  #ffffff;
+  --off-white: #f8f7f4;
+  --gray-100: #f2f1ee;
+  --gray-200: #e8e6e0;
+  --gray-400: #9e9b94;
+  --gray-600: #5a5750;
+  --gray-800: #2d2b27;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body:    'Source Sans 3', 'Segoe UI', sans-serif;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.10);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.14);
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --transition: 0.2s ease;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  color: var(--gray-800);
+  background: var(--white);
+  line-height: 1.6;
+  font-size: 15px;
+}
+
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+button { cursor: pointer; font-family: inherit; }
+input, select, textarea { font-family: inherit; }
+
+h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ── Buttons ─────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border: 2px solid transparent;
+  transition: all var(--transition);
+}
+.btn-primary   { background: var(--navy); color: var(--white); }
+.btn-primary:hover { background: var(--navy-light); }
+.btn-red       { background: var(--red); color: var(--white); }
+.btn-red:hover { background: var(--red-hover); }
+.btn-outline   { background: transparent; border-color: var(--navy); color: var(--navy); }
+.btn-outline:hover { background: var(--navy); color: var(--white); }
+.btn-ghost     { background: transparent; color: var(--gray-600); border-color: var(--gray-200); }
+.btn-ghost:hover { background: var(--gray-100); }
+.btn:disabled  { opacity: 0.5; cursor: not-allowed; }
+.btn-sm        { padding: 6px 14px; font-size: 13px; }
+.btn-lg        { padding: 14px 28px; font-size: 16px; }
+.btn-block     { width: 100%; }
+
+/* ── Form ────────────────────────────────── */
+.form-group { display: flex; flex-direction: column; gap: 6px; }
+.form-label { font-size: 13px; font-weight: 600; color: var(--gray-600); letter-spacing: 0.03em; text-transform: uppercase; }
+.form-input {
+  padding: 10px 14px;
+  border: 1.5px solid var(--gray-200);
+  border-radius: var(--radius-sm);
+  font-size: 15px;
+  color: var(--gray-800);
+  background: var(--white);
+  transition: border-color var(--transition);
+}
+.form-input:focus { outline: none; border-color: var(--navy); }
+.form-input::placeholder { color: var(--gray-400); }
+.form-error { color: var(--red); font-size: 13px; }
+
+/* ── Badge ───────────────────────────────── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 3px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.badge-navy  { background: var(--navy); color: var(--white); }
+.badge-red   { background: var(--red);  color: var(--white); }
+.badge-gold  { background: var(--gold); color: var(--white); }
+.badge-gray  { background: var(--gray-200); color: var(--gray-600); }
+
+/* ── Page loader ─────────────────────────── */
+.page-loader {
+  display: flex; align-items: center; justify-content: center;
+  min-height: 60vh;
+}
+.spinner {
+  width: 40px; height: 40px;
+  border: 3px solid var(--gray-200);
+  border-top-color: var(--navy);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── Toasts ──────────────────────────────── */
+.toast-success { background: var(--navy) !important; color: var(--white) !important; }
+.toast-error   { background: var(--red)  !important; color: var(--white) !important; }
