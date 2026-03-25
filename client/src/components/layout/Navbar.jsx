@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { useCart } from '../../context/CartContext';
@@ -17,18 +17,6 @@ export default function Navbar() {
   const [search, setSearch]       = useState('');
   const [menuOpen, setMenuOpen]   = useState(false);
   const [userOpen, setUserOpen]   = useState(false);
-  const userRef = useRef(null);
-
-  // Close dropdown when clicking outside
-  useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (userRef.current && !userRef.current.contains(e.target)) {
-        setUserOpen(false);
-      }
-    };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -37,6 +25,7 @@ export default function Navbar() {
 
   return (
     <header className="site-header">
+
       {/* Main header */}
       <div className="main-header">
         <div className="container main-header__inner">
@@ -64,8 +53,8 @@ export default function Navbar() {
           {/* Actions */}
           <div className="header-actions">
             {/* Account */}
-            <div className="header-actions__user" ref={userRef}>
-              <button className="header-actions__btn" onClick={() => setUserOpen(!userOpen)}>
+            <div className="header-actions__user" onMouseEnter={() => setUserOpen(true)} onMouseLeave={() => setUserOpen(false)}>
+              <button className="header-actions__btn">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
                 </svg>
@@ -74,14 +63,14 @@ export default function Navbar() {
                 <div className="dropdown">
                   {user ? (
                     <>
-                      <Link to="/account" className="dropdown__item" onClick={() => setUserOpen(false)}>My Account</Link>
-                      <Link to="/account?tab=orders" className="dropdown__item" onClick={() => setUserOpen(false)}>My Orders</Link>
-                      <button className="dropdown__item dropdown__item--danger" onClick={() => { logout(); setUserOpen(false); }}>Sign Out</button>
+                      <Link to="/account" className="dropdown__item">My Account</Link>
+                      <Link to="/account?tab=orders" className="dropdown__item">My Orders</Link>
+                      <button className="dropdown__item dropdown__item--danger" onClick={logout}>Sign Out</button>
                     </>
                   ) : (
                     <>
-                      <Link to="/login" className="dropdown__item" onClick={() => setUserOpen(false)}>Sign In</Link>
-                      <Link to="/register" className="dropdown__item" onClick={() => setUserOpen(false)}>Register</Link>
+                      <Link to="/login"    className="dropdown__item">Sign In</Link>
+                      <Link to="/register" className="dropdown__item">Register</Link>
                     </>
                   )}
                 </div>

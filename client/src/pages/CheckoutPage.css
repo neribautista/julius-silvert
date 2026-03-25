@@ -1,38 +1,83 @@
-.checkout-page { padding: 36px 0 80px; }
-.checkout-page h1 { font-size: 28px; color: var(--navy); margin-bottom: 32px; }
-.checkout-page__layout { display: grid; grid-template-columns: 1fr 360px; gap: 40px; align-items: start; }
+.checkout-page { padding: 40px 0 100px; background: var(--off-white); }
+.checkout-page h1 {
+  font-family: var(--font-display);
+  font-size: 32px; font-weight: 600;
+  color: var(--navy); margin-bottom: 36px;
+}
+.checkout-page__layout { display: grid; grid-template-columns: 1fr 380px; gap: 40px; align-items: start; }
 
 .checkout-section { margin-bottom: 32px; }
 .checkout-section h2 {
-  font-size: 16px; font-weight: 700;
-  color: var(--navy); margin-bottom: 16px;
-  padding-bottom: 10px; border-bottom: 1px solid var(--gray-200);
+  font-family: var(--font-body);
+  font-size: 11px; font-weight: 700;
+  color: var(--gray-400);
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--gray-200);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  position: relative;
 }
-.checkout-form { display: flex; flex-direction: column; }
-.checkout-form__row { display: grid; grid-template-columns: 1fr 80px 120px; gap: 12px; margin-top: 12px; }
+.checkout-section h2::after {
+  content: '';
+  position: absolute; bottom: -1px; left: 0;
+  width: 32px; height: 2px;
+  background: var(--gold);
+}
+
+.checkout-form {
+  background: var(--white);
+  border: var(--border);
+  border-radius: var(--radius-md);
+  padding: 32px;
+  box-shadow: var(--shadow-card);
+  display: flex; flex-direction: column; gap: 0;
+}
+.checkout-form__row { display: grid; grid-template-columns: 1fr 80px 130px; gap: 14px; margin-top: 14px; }
 
 .checkout-summary {
-  position: sticky; top: 20px;
-  border: 1px solid var(--gray-200);
+  position: sticky; top: 96px;
+  border: var(--border);
   border-radius: var(--radius-md);
-  padding: 28px; background: var(--white);
+  padding: 28px;
+  background: var(--white);
+  box-shadow: var(--shadow-card);
 }
-.checkout-summary h2 { font-size: 18px; color: var(--navy); margin-bottom: 20px; }
-
-.checkout-summary__items { display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px; max-height: 320px; overflow-y: auto; }
+.checkout-summary h2 {
+  font-family: var(--font-display);
+  font-size: 20px; color: var(--navy);
+  margin-bottom: 24px; font-weight: 600;
+}
+.checkout-summary__items {
+  display: flex; flex-direction: column; gap: 14px;
+  margin-bottom: 24px;
+  max-height: 340px; overflow-y: auto;
+  padding-right: 4px;
+}
 .checkout-summary__item {
-  display: grid; grid-template-columns: 48px 1fr auto;
-  gap: 10px; align-items: center;
+  display: grid; grid-template-columns: 52px 1fr auto;
+  gap: 12px; align-items: center;
   font-size: 13px;
 }
-.checkout-summary__item img { width: 48px; height: 48px; object-fit: contain; border: 1px solid var(--gray-200); border-radius: var(--radius-sm); padding: 4px; }
-.checkout-summary__item-name { font-weight: 600; color: var(--gray-800); line-height: 1.3; }
-.checkout-summary__item-qty  { color: var(--gray-400); margin-top: 2px; }
-.checkout-summary__item span { font-weight: 600; color: var(--navy); }
+.checkout-summary__item img {
+  width: 52px; height: 52px;
+  object-fit: contain;
+  border: var(--border);
+  border-radius: var(--radius-sm);
+  padding: 4px;
+  background: var(--gray-50);
+}
+.checkout-summary__item-name {
+  font-family: var(--font-body);
+  font-weight: 600; color: var(--gray-800);
+  line-height: 1.35; font-size: 13px;
+}
+.checkout-summary__item-qty  { font-family: var(--font-body); color: var(--gray-400); margin-top: 2px; font-size: 12px; }
+.checkout-summary__item span { font-family: var(--font-display); font-weight: 600; color: var(--navy); font-size: 15px; }
 
 .checkout-summary__totals {
   display: flex; flex-direction: column; gap: 10px;
-  padding: 16px 0; border-top: 1px solid var(--gray-200);
+  padding: 18px 0; border-top: 1px solid var(--gray-200);
   margin-bottom: 20px;
 }
 
@@ -42,4 +87,5 @@
 }
 @media (max-width: 560px) {
   .checkout-form__row { grid-template-columns: 1fr 1fr; }
+  .checkout-form { padding: 20px; }
 }

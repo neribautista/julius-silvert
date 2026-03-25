@@ -15,15 +15,6 @@ export default function Footer() {
         </div>
 
         <div className="footer__col">
-          <h4>Shop</h4>
-          <ul>
-            {['Meat & Poultry','Seafood','Dairy & Eggs','Produce','Pantry','Frozen'].map(c => (
-              <li key={c}><Link to={`/products?category=${encodeURIComponent(c)}`}>{c}</Link></li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="footer__col">
           <h4>Account</h4>
           <ul>
             <li><Link to="/login">Sign In</Link></li>

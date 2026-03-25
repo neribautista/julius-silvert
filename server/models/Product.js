@@ -12,16 +12,17 @@ const productSchema = new mongoose.Schema({
     required: true,
   },
   description: { type: String },
-  image: { type: String, default: '/images/placeholder.jpg' },
+  image:      { type: String, default: '/images/placeholder.jpg' },
+  imageHover: { type: String, default: '' },
   pricePerLb: { type: Number },
-  caseSize: { type: String },    // e.g. "8 x 8.75lb"
+  caseSize: { type: String },
   packOptions: [{
     type: { type: String, enum: ['CASE', 'PC'] },
     price: Number,
   }],
-  isNew: { type: Boolean, default: false },
+  isNew:      { type: Boolean, default: false },
   isFeatured: { type: Boolean, default: false },
-  inStock: { type: Boolean, default: true },
+  inStock:    { type: Boolean, default: true },
   tags: [String],
 }, { 
   timestamps: true,
